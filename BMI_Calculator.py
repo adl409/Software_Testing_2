@@ -1,17 +1,16 @@
-# import pytest
+import pytest
 
 def Calculate_Bmi(weight, feet, inches):
+    
     total_weight = weight * 0.45
-
-    total_height = (((feet * 12) + inches) * 0.025)**2
-
-    total = round((total_weight / total_height), 1)
+    total_height = ((feet * 12) + inches) * 0.025
+    total = round((total_weight / (total_height ** 2)), 1)  
 
 
     if total < 18.5:
         type = "Underweight"
 
-    elif total <= 18.5 and total >= 24.9:
+    elif total >= 18.5 and total <= 24.9:
         type = "Normal Weight"
 
     elif total >= 25 and total <= 29.9:
