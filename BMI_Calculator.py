@@ -1,34 +1,36 @@
 # import pytest
 
-def Calculate_Bmi(weight, height):
+def Calculate_Bmi(weight, feet, inches):
     total_weight = weight * 0.45
-    total_height = (height * 0.025)**2
 
-    total = total_weight / total_height
+    total_height = (((feet * 12) + inches) * 0.025)**2
+
+    total = round((total_weight / total_height), 1)
 
 
     if total < 18.5:
-        print("Underweight")
+        type = "Underweight"
+
     elif total <= 18.5 and total >= 24.9:
-        print("Normal Weight")
+        type = "Normal Weight"
+
     elif total >= 25 and total <= 29.9:
-        print("Overweight")
-    elif total >= 30:
-        print("Obese")
+        type = "Overweight"
 
-# def test_under():
+    else:
+        type = "Obese"
+
+    return total, type
     
-# def test_over():
-
-# def test_normal():
-
-# def test_obese():
 
 
 
 def main():
     weight = float(input("Enter weight in lbs: "))
-    height = float(input("Enter height in inches: "))
-    bmi = Calculate_Bmi(weight, height)
+    feet = float(input("Enter height in feet: "))
+    inches = float(input("Enter height in inches: "))
 
-    print("This is your BMI:", bmi)
+    total, type = Calculate_Bmi(weight, feet, inches)
+    print("This is your BMI:", total, type)
+
+main()
